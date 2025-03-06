@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindMyKey</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/150" alt="FindMyKey Logo">
+        </div>
+        <h1>Hjälp till att återlämna nycklar tryggt</h1>
+        <p>FindMyKey kopplar ihop människor anonymt för att återfå förlorade nycklar.</p>
+    </header>
+
+    <!-- Val för användartyp -->
+    <section id="role-selection">
+        <h2>Välj roll</h2>
+        <button onclick="showSection('finder-section')">Jag har hittat en nyckel</button>
+        <button onclick="showSection('owner-login')">Jag är nyckelägaren</button>
+    </section>
+
+    <!-- För den som hittar en nyckel -->
+    <section id="finder-section" style="display: none;">
+        <h2>Ange kod från nyckelbrickan</h2>
+        <form id="code-form">
+            <input type="text" id="user-code" placeholder="Skriv in personlig kod" required>
+            <button type="button" onclick="finderLogin()">Bekräfta kod</button>
+        </form>
+        <p id="code-error" class="error-message"></p>
+    </section>
+
+    <!-- För nyckelägare -->
+    <section id="owner-login" style="display: none;">
+        <h2>Nyckelägarens inloggning</h2>
+        <form id="owner-login-form">
+            <input type="text" id="owner-code" placeholder="Skriv in personlig kod" required>
+            <button type="button" onclick="ownerLogin()">Logga in</button>
+        </form>
+        <p id="owner-error" class="error-message"></p>
+    </section>
+
+    <!-- Gemensam chatt -->
+    <section id="chat-section" style="display: none;">
+        <h2>Chatt</h2>
+        <div class="chat-section">
+            <div id="chat-messages" class="chat-messages">
+                <!-- Meddelanden läggs till här dynamiskt -->
+            </div>
+            <div class="chat-input">
+                <textarea id="message" placeholder="Skriv ditt meddelande här..."></textarea>
+                <button onclick="sendMessage()">Skicka</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 FindMyKey. Skapad för trygg återlämning av nycklar.</p>
+    </footer>
+
+</body>
+</html>
