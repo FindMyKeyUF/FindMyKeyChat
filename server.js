@@ -7,36 +7,32 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = 3000;
+const DATA_FILE = 'data.json';
 
-// Läs in meddelanden från data.json
 function getMessages() {
     try {
-        return JSON.parse(fs.readFileSync('data.json'));
-    } catch (err) {
-        return [];
+        return JSON.parse(fs.readFileSync(DATA_FILE));
+    } catch {
+        return {};
     }
 }
 
-// Spara meddelanden till data.json
 function saveMessages(messages) {
-    fs.writeFileSync('data.json', JSON.stringify(messages));
+    fs.writeFileSync(DATA_FILE, JSON.stringify(messages, null, 2));
 }
 
-// API för att hämta meddelanden
-app.get('/messages', (req, res) => {
+app.get('/messages/:code', (req, res) => {
     const messages = getMessages();
-    res.json(messages);
+    res.json(messages[req.params.code] || []);
 });
 
-// API för att skicka meddelanden
-app.post('/messages', (req, res) => {
-    const { role, message } = req.body;
+app.post('/messages/:code', (req, res) => {
     const messages = getMessages();
-    messages.push({ role, message });
+    const code = req.params.code;
+    messages[code] = messages[code] || [];
+    messages[code].push(req.body);
     saveMessages(messages);
-    res.status(200).send('Message saved');
+    res.sendStatus(200);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
