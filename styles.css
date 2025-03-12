@@ -19,13 +19,7 @@ header .logo img {
     margin-bottom: 20px;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    color: white;
-}
-
-header p {
-    font-size: 1.2rem;
+header h1, header p {
     color: white;
 }
 
@@ -40,13 +34,11 @@ section {
 
 h2 {
     color: #005f73;
-    margin-bottom: 20px;
 }
 
 /* Rollval */
 #role-selection {
     text-align: center;
-    margin: 20px auto;
 }
 
 #role-selection button {
@@ -63,43 +55,10 @@ h2 {
     background: #0a9396;
 }
 
-/* Formulär för kod */
-#code-form input {
-    padding: 10px;
-    width: 70%;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Arial', sans-serif;
-    margin-bottom: 10px;
-}
-
-#code-form button {
-    padding: 10px 20px;
-    background: #005f73;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-#code-form button:hover {
-    background: #0a9396;
-}
-
-.error-message {
-    color: red;
-    font-size: 0.9rem;
-}
-
-.chat-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
+/* Chatt-styling */
 .chat-messages {
     background: #f4f4f4;
     padding: 10px;
-    border: 1px solid #ddd;
     border-radius: 8px;
     max-height: 300px;
     overflow-y: auto;
@@ -120,7 +79,7 @@ h2 {
 .chat-input button {
     background: #005f73;
     color: white;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
