@@ -1,1 +1,25 @@
-[]
+// Läs meddelanden från data.json 
+function loadMessages() { 
+    fetch('data.json')
+        .then(response => response.json()) 
+        .then(data => { 
+            // Visa meddelandena i chatten
+        });
+} 
+
+// Skriv ett nytt meddelande till data.json
+function saveMessage(newMessage) { 
+    fetch('data.json')
+        .then(response => response.json()) 
+        .then(data => { 
+            data.push(newMessage); 
+            // Skriv tillbaka till data.json 
+            fetch('data.json', { 
+                method: 'PUT', 
+                body: JSON.stringify(data),
+                headers: { 
+                    'Content-Type': 'application/json'
+                } 
+            }); 
+        }); 
+}
