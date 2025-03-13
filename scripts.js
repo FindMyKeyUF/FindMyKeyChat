@@ -29,7 +29,7 @@ function ownerLogin() {
 }
 
 function loadChat() {
-    fetch(`http://localhost:3000/messages/${currentCode}`)
+    fetch("https://findmykey-platform.onrender.com/messages/${currentCode}")
         .then(response => response.json())
         .then(messages => {
             const chatMessages = document.getElementById("chat-messages");
@@ -47,7 +47,7 @@ function sendMessage() {
     const messageBox = document.getElementById("message");
     if (messageBox.value.trim() === "") return;
 
-    fetch(`http://localhost:3000/messages/${currentCode}`, {
+    fetch(`https://findmykey-platform.onrender.com/messages/${currentCode}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ role: currentUserRole, message: messageBox.value.trim() })
